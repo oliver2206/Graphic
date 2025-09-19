@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hero Section with Responsive Video</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #000;
+            color: #fff;
+        }
+        
+        header {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 10;
+            background: #fff;
+        }
+        
+        .navbar-brand {
+            color: #3391ff !important;
+        }
+        
+        .navbar-nav .nav-link {
+            color: #3391ff;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        
+        .navbar-nav .nav-link:hover {
+            color: #000;
+        }
+        
+        .navbar-toggler {
+            border: none;
+        }
+        
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+        
+        .navbar-toggler .bi {
+            color: #3391ff;
+        }
+        /* HERO SECTION */
+        
+        .hero {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            padding: 60px 10%;
+            text-align: center;
+        }
+        
+        .hero-video-container {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        .hero-video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .hero-video-container .overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-text {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            color: #fff;
+        }
+        
+        .hero-text h3 {
+            font-size: 1.5rem;
+            color: #3391ff;
+        }
+        
+        .hero-text h1 {
+            font-size: 3rem;
+            margin: 10px 0;
+            color: #3391ff;
+        }
+        
+        .highlight {
+            color: #3391ff;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            border: 2px solid #3391ff;
+            background: #3391ff;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 4px;
+            transition: background 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #2673cc;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            .hero-text h3 {
+                font-size: 1.2rem;
+            }
+            .hero {
+                padding: 40px 5%;
+            }
+        }
+        
+        .modal-dialog {
+            max-width: 90%;
+            height: 90%;
+        }
+        
+        .modal-body {
+            height: 80vh;
+            padding: 0;
+        }
+        
+        .modal-body iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #3391ff;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+        }
+        
+        #scrollToTopBtn:hover {
+            background: #2673cc;
+        }
+        
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            z-index: 9999;
+            display: none;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: all 0.3s ease;
+            padding: 20px;
+        }
+        
+        .mobile-nav-overlay.active {
+            display: flex;
+        }
+        
+        .mobile-nav-overlay .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2.5rem;
+            cursor: pointer;
+            color: #3391ff;
+            background: none;
+            border: none;
+        }
+        
+        .mobile-nav-overlay .social-icons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-right: 50px;
+        }
+        
+        .mobile-nav-overlay .social-icons a {
+            font-size: 2rem;
+            color: #3391ff;
+            transition: color 0.3s ease;
+        }
+        
+        .mobile-nav-overlay .social-icons a:hover {
+            color: #000;
+        }
+        
+        .mobile-nav-overlay .nav-links {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .mobile-nav-overlay .nav-links a {
+            font-size: 1.5rem;
+            margin: 15px 0;
+            color: #3391ff;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        .mobile-nav-overlay .nav-links a:hover {
+            color: #000;
+        }
+        
+        @media (min-width: 992px) {
+            .mobile-nav-overlay {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar navbar-expand-lg container-fluid px-5">
+            <a class="navbar-brand fw-bold" href="./Index.html">MySite</a>
+            <button class="navbar-toggler" type="button" onclick="toggleMobileNav()">
+        <span class="bi bi-list fs-1"></span>
+      </button>
+            <div class="collapse navbar-collapse justify-content-center d-none d-lg-flex">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="./ABOUT.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./Services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./Ecperience.html">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./Gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./Testimonials.html">Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./Contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./Portfolio.html">Portfolio</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Nav -->
+    <div id="mobileNav" class="mobile-nav-overlay">
+        <button class="close-btn" onclick="toggleMobileNav()">&times;</button>
+        <div class="social-icons">
+            <a href="https://www.behance.net/" target="_blank"><i class="bi bi-behance"></i></a>
+            <a href="https://www.facebook.com/" target="_blank"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/" target="_blank"><i class="bi bi-instagram"></i></a>
+        </div>
+        <div class="nav-links">
+            <a href="./ABOUT.html" onclick="toggleMobileNav()">About</a>
+            <a href="./Services.html" onclick="toggleMobileNav()">Services</a>
+            <a href="./Ecperience.html" onclick="toggleMobileNav()">Experience</a>
+            <a href="./Gallery.html" onclick="toggleMobileNav()">Gallery</a>
+            <a href="./Testimonials.html" onclick="toggleMobileNav()">Testimonials</a>
+            <a href="./Contact.html" onclick="toggleMobileNav()">Contact</a>
+            <a href="./Portfolio.html" onclick="toggleMobileNav()">Portfolio</a>
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section id="hero">
+        <div class="button-grid">
+            <a href="#video-editing"><button class="glow-button">Video Editing</button></a>
+            <a href="#photo-editing"><button class="glow-button">Photo Editing</button></a>
+            <a href="#ui-ux"><button class="glow-button">UI UX</button></a>
+            <a href="#branding-identity"><button class="glow-button">Branding & Identity Design</button></a>
+            <a href="#marketing-promotional"><button class="glow-button">Marketing & Promotional Graphics</button></a>
+            <a href="#digital-content"><button class="glow-button">Digital Content Design</button></a>
+            <a href="#packaging-product"><button class="glow-button">Packaging Product Design</button></a>
+            <a href="#photo-restoration"><button class="glow-button">Photo Restoration</button></a>
+        </div>
+    </section>
+    <!-- TARGET SECTIONS -->
+    <section id="video-editing" class="content-section" style="margin-top: 60px;">
+        <h1>Video Editing</h1>
+
+
+        <div class="gallery">
+            <div class="video-player">
+                <video src="./PNGFILE/ilooos.mp4" autoplay muted loop playsinline></video>
+            </div>
+            <div class="video-player">
+                <video src="videos/video2.mp4" autoplay muted loop playsinline></video>
+            </div>
+            <div class="video-player">
+                <video src="videos/video3.mp4" autoplay muted loop playsinline></video>
+            </div>
+            <div class="video-player">
+                <video src="videos/video4.mp4" autoplay muted loop playsinline></video>
+            </div>
+            <div class="video-player">
+                <video src="videos/video5.mp4" autoplay muted loop playsinline></video>
+            </div>
+            <div class="video-player">
+                <video src="videos/video6.mp4" autoplay muted loop playsinline></video>
+            </div>
+        </div>
+        <style>
+            body {
+                margin: 0;
+                font-family: 'Arial', sans-serif;
+                background-color: #111;
+                color: #fff;
+                text-align: center;
+            }
+            
+            h1 {
+                margin-top: 40px;
+                font-size: 2.5em;
+            }
+            
+            .sub {
+                background: #ffa930;
+                display: inline-block;
+                padding: 5px 15px;
+                border-radius: 8px;
+                margin-top: 10px;
+                font-weight: bold;
+                font-size: 0.9em;
+            }
+            
+            .gallery {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 2fr));
+                gap: 20px;
+                padding: 40px;
+                max-width: 1400px;
+                margin: auto;
+            }
+            
+            .video-player {
+                border-radius: 10px;
+                overflow: hidden;
+                background-color: #000;
+            }
+            
+            .video-player video {
+                width: 100%;
+                height: auto;
+                border: none;
+                outline: none;
+                display: block;
+            }
+        </style>
+    </section>
+
+    <section id="photo-editing" class="content-section">
+        <div class="photo-editing-container">
+            <div class="gallery-title">
+                <h2>Graphic Design & Edits</h2>
+            </div>
+            <div class="gallery-grid">
+                <img src="./PNGFILE/after.png" alt="Edit 1">
+                <img src="./PNGFILE/BEFORE AND AFTER LIGHTOOM.jpg" alt="Edit 2">
+                <img src="./PNGFILE/TRIPPLE EXPOSURE 1.jpg" alt="Edit 3">
+                <img src="./PNGFILE/TRIPPLE EXPOSURE 2.jpg" alt="Edit 4">
+                <img src="img5.jpg" alt="Edit 5">
+                <img src="img6.jpg" alt="Edit 6">
+                <img src="img7.jpg" alt="Edit 7">
+                <img src="img8.jpg" alt="Edit 8">
+                <img src="img9.jpg" alt="Edit 9">
+                <img src="img10.jpg" alt="Edit 10">
+                <img src="img11.jpg" alt="Edit 11">
+                <img src="img12.jpg" alt="Edit 12">
+                <img src="img13.jpg" alt="Edit 13">
+                <img src="img14.jpg" alt="Edit 14">
+                <img src="img15.jpg" alt="Edit 15">
+                <img src="img16.jpg" alt="Edit 16">
+            </div>
+        </div>
+
+        <style>
+            .content-section {
+                padding: 60px 20px;
+                background-color: #f5efdd;
+                font-family: Arial, sans-serif;
+            }
+            
+            .photo-editing-container {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 40px;
+                align-items: flex-start;
+                justify-content: center;
+            }
+            
+            .gallery-title {
+                flex: 1 1 100%;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            
+            .gallery-title h2 {
+                font-size: 2rem;
+                font-weight: bold;
+                margin: 0;
+            }
+            
+            .gallery-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 20px;
+                width: 100%;
+                justify-items: center;
+            }
+            
+            .gallery-grid img {
+                width: 200px;
+                height: 200px;
+                object-fit: cover;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s;
+            }
+            
+            .gallery-grid img:hover {
+                transform: scale(1.05);
+            }
+            
+            @media (max-width: 768px) {
+                .gallery-title h2 {
+                    font-size: 1.5rem;
+                }
+                .gallery-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+                .gallery-grid img {
+                    width: 100%;
+                    height: auto;
+                    max-width: 200px;
+                    max-height: 200px;
+                }
+            }
+        </style>
+    </section>
+
+
+    <section id="ui-ux" class="content-section">
+        <h2>UI UX</h2>
+        <p>Details about UI and UX design...</p>
+    </section>
+
+    <section id="branding-identity" class="content-section">
+        <h2>Branding & Identity Design</h2>
+        <p>Details about branding and visual identity design...</p>
+    </section>
+
+    <section id="marketing-promotional" class="content-section">
+        <h2>Marketing & Promotional Graphics</h2>
+        <p>Details about marketing and promotional design...</p>
+    </section>
+
+    <section id="digital-content" class="content-section">
+        <h2>Digital Content Design</h2>
+        <p>Details about digital content design...</p>
+    </section>
+
+    <section id="packaging-product" class="content-section">
+        <h2>Packaging Product Design</h2>
+        <p>This section focuses on the design of packaging for various products. Services include:</p>
+        <ul>
+            <li><strong>Label Design:</strong> Creative and compliant product labels.</li>
+            <li><strong>Box & Container Design:</strong> Structurally appealing and brand-consistent packaging.</li>
+            <li><strong>Retail-Ready Concepts:</strong> Designs that stand out on shelves and convey brand values.</li>
+            <li><strong>Mockups:</strong> Realistic previews for marketing and client approval.</li>
+        </ul>
+        <p>Packaging is designed with focus on functionality, branding, and consumer appeal.</p>
+    </section>
+
+    <section id="photo-restoration" class="content-section">
+        <h2>Photo Restoration</h2>
+        <p>This service involves reviving old or damaged photos to restore their original beauty. Techniques include:</p>
+        <ul>
+            <li>Repairing torn or scratched photographs</li>
+            <li>Color correction and enhancement</li>
+            <li>Removing stains, blemishes, or dust</li>
+            <li>Restoring faded images with historical accuracy</li>
+        </ul>
+        <p>Ideal for preserving family memories and historical archives in digital format with improved quality.</p>
+    </section>
+
+    <!-- JavaScript for scroll reveal effect -->
+    <script>
+        const sections = document.querySelectorAll('.content-section');
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.2
+        });
+
+        sections.forEach(section => observer.observe(section));
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: black;
+        }
+        
+        #hero {
+            position: relative;
+            height: auto;
+            padding: 320px 10%;
+            background-color: #090505;
+            overflow: hidden;
+        }
+        
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 50px;
+            justify-content: center;
+        }
+        
+        .glow-button {
+            width: 100%;
+            height: 60px;
+            font-size: 16px;
+            color: white;
+            background-color: blue;
+            border: none;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            box-shadow: 0 0 15px blue;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            text-shadow: 0 0 5px blue;
+        }
+        
+        .glow-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px 10px blue;
+            text-shadow: 0 0 10px blue;
+        }
+        
+        section.content-section {
+            padding: 200px 10%;
+            background-color: #111;
+            color: white;
+            border-bottom: 1px solid #333;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        section.content-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        @media (max-width: 768px) {
+            .button-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .button-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</body>
+
+
+
+<!-- Scripts -->
+<script>
+    const textList = ['UI/UX Designer', 'Photo Retoucher', 'Marketing Artist'];
+    const typingText = document.getElementById('typing-text');
+    let wordIndex = 0,
+        charIndex = 0,
+        isDeleting = false;
+
+    function type() {
+        const current = textList[wordIndex];
+        typingText.textContent = isDeleting ? current.substring(0, charIndex--) : current.substring(0, charIndex++);
+        if (!isDeleting && charIndex === current.length) {
+            isDeleting = true;
+            setTimeout(type, 1500);
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            wordIndex = (wordIndex + 1) % textList.length;
+            setTimeout(type, 500);
+        } else {
+            setTimeout(type, isDeleting ? 50 : 100);
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", type);
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const audio = document.getElementById("hero-audio");
+        const unlockAudio = () => {
+            audio.play().catch(() => {});
+            document.removeEventListener("click", unlockAudio);
+        };
+        document.addEventListener("click", unlockAudio);
+    });
+
+    const heroSection = document.getElementById("home");
+    const heroVideo = document.getElementById("hero-video");
+    const heroAudio = document.getElementById("hero-audio");
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                heroVideo.play();
+                heroAudio.play().catch(() => {});
+            } else {
+                heroVideo.pause();
+                heroAudio.pause();
+            }
+        });
+    }, {
+        threshold: 0.5
+    });
+
+    observer.observe(heroSection);
+
+    document.getElementById("scrollToTopBtn").addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    function toggleMobileNav() {
+        document.getElementById("mobileNav").classList.toggle("active");
+    }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
