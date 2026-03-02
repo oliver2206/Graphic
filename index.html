@@ -337,184 +337,300 @@
         </div>
     </div>
 
-
     <!-- About Section -->
     <section id="about">
-        <!-- Left Side: Background Image with Overlay Text -->
-        <div class="about-left">
-            <div class="about-text">
 
+        <!-- Left Side: Auto Carousel -->
+        <div class="about-left">
+            <div class="carousel">
+                <div class="overlay"></div>
+
+                <div class="slides">
+                    <img src="./PNGFILE/profile.1jpg.jpg" class="slide active">
+                    <img src="./PNGFILE/profile.jpg" class="slide">
+                    <img src="./PNGFILE/profile.jpg" class="slide">
+                </div>
             </div>
         </div>
 
         <!-- Right Side: Content -->
         <div class="about-right">
-            <h1>About Me</h1>
-            <div class="divider"></div>
-            <p>
-                I'm Nathaniel Tolentino Oliver II, a creative web developer and designer from the Philippines. With a strong eye for design and a passion for coding, I specialize in building responsive, modern websites and web applications. I love combining aesthetics
-                with functionality to deliver meaningful digital experiences.
+            <h1 class="fade-in">About Me</h1>
+            <div class="divider fade-in"></div>
+
+            <p class="fade-in">
+                I'm <strong>Nathaniel Tolentino Oliver II</strong>, a creative web developer and designer from the Philippines. I specialize in building responsive, modern websites and web applications that combine aesthetics with powerful functionality.
             </p>
-            <ul>
-                <li><strong>Location:</strong> Magsingal, Ilocos Sur, Philippines</li>
-                <li><strong>Email:</strong> </li>
-                <li><strong>Phone:</strong></li>
-                <li><strong>Skills:</strong></li>
+
+            <ul class="fade-in">
+                <li><strong>📍 Location:</strong> Magsingal, Ilocos Sur, Philippines</li>
+                <li><strong>📧 Email:</strong> your@email.com</li>
+                <li><strong>📱 Phone:</strong> +63 9XX XXX XXXX</li>
             </ul>
-            <div class="about-buttons">
-                <button>Explore My Work</button>
+
+            <div class="skills fade-in">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+                <span>UI/UX</span>
+                <span>Responsive Design</span>
+            </div>
+
+            <div class="about-buttons fade-in">
+                <button onclick="scrollToPortfolio()">Explore My Work</button>
                 <a href="./Nathaniel_Oliver_CV.pdf" target="_blank">Download CV</a>
             </div>
         </div>
-        <style>
-            body {
-                margin: 0;
-                font-family: Arial, sans-serif;
-            }
-            
-            section#about {
-                display: flex;
-                flex-wrap: wrap;
-                width: 100%;
-                height: 100vh;
-            }
-            
-            .about-left,
-            .about-right {
-                flex: 1;
-                min-width: 300px;
-                position: relative;
-            }
-            
-            .about-left {
-                background: url('./PNGFILE/profile.jpg') no-repeat center center/cover;
-            }
-            
-            .about-text {
-                position: absolute;
-                bottom: 60px;
-                left: 40px;
-                color: white;
-                text-shadow: 2px 2px 5px #3391ff;
-            }
-            
-            .about-text p {
-                font-size: 16px;
-                margin: 0 0 10px 0;
-            }
-            
-            .about-text h2 {
-                font-size: 28px;
-                font-weight: bold;
-                line-height: 1.4;
-                margin: 0;
-            }
-            
-            .about-right {
-                background-color: #1a1a1a;
-                color: white;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                padding: 60px;
-            }
-            
-            .about-right h1 {
-                font-size: 50px;
-                font-weight: bold;
-                color: #3391ff;
-                margin: 0;
-            }
-            
-            .divider {
-                width: 60px;
-                height: 3px;
-                background-color: #3391ff;
-                margin: 20px 0;
-            }
-            
-            .about-right p,
-            .about-right ul {
-                color: #3391ff;
-            }
-            
-            .about-right p {
-                font-size: 18px;
-                margin-bottom: 40px;
-            }
-            
-            .about-right ul {
-                font-size: 16px;
-                line-height: 1.8;
-                margin-bottom: 40px;
-                padding-left: 20px;
-            }
-            
-            .about-buttons {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 20px;
-            }
-            
-            .about-buttons button,
-            .about-buttons a {
-                padding: 12px 24px;
-                font-weight: bold;
-                border: none;
-                border-radius: 4px;
-                cursor: pointer;
-                box-shadow: 0 4px 10px rgba(51, 145, 255, 0.4);
-                transition: all 0.3s ease;
-                text-decoration: none;
-                display: inline-block;
-            }
-            
-            .about-buttons button {
-                background-color: white;
-                color: #3391ff;
-            }
-            
-            .about-buttons button:hover {
-                background-color: #3391ff;
-                color: white;
-            }
-            
-            .about-buttons a {
-                background-color: #3391ff;
-                color: white;
-            }
-            
-            .about-buttons a:hover {
-                background-color: #2277cc;
-            }
-            /* Responsive tweaks */
-            
-            @media (max-width: 768px) {
-                section#about {
-                    flex-direction: column;
-                    height: auto;
-                }
-                .about-left,
-                .about-right {
-                    min-height: 400px;
-                }
-                .about-text {
-                    position: static;
-                    padding: 20px;
-                }
-                .about-right {
-                    padding: 40px 20px;
-                }
-                .about-right h1 {
-                    font-size: 36px;
-                }
-            }
-        </style>
+
     </section>
 
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: #0f0f0f;
+        }
+        /* Section Layout */
+        
+        section#about {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            min-height: 100vh;
+        }
+        /* ================= LEFT SIDE ================= */
+        
+        .about-left {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+        }
+        /* Carousel */
+        
+        .carousel {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Responsive Heights */
+        
+        @media (max-width: 1024px) {
+            .carousel {
+                height: 70vh;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .carousel {
+                height: 50vh;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .carousel {
+                height: 40vh;
+            }
+        }
+        /* Overlay */
+        
+        .overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.3));
+            z-index: 2;
+        }
+        /* Slides */
+        
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            opacity: 0;
+            transform: scale(1.05);
+            transition: opacity 1s ease-in-out, transform 6s ease-in-out;
+        }
+        
+        .slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+        /* ================= RIGHT SIDE ================= */
+        
+        .about-right {
+            flex: 1;
+            min-width: 300px;
+            background: #111;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 70px;
+        }
+        
+        .about-right h1 {
+            font-size: 48px;
+            color: #3391ff;
+            margin: 0;
+        }
+        
+        .divider {
+            width: 70px;
+            height: 4px;
+            background: #3391ff;
+            margin: 20px 0 30px;
+            border-radius: 2px;
+        }
+        
+        .about-right p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #ccc;
+        }
+        
+        .about-right ul {
+            list-style: none;
+            padding: 0;
+            line-height: 2;
+            margin: 30px 0;
+            color: #aaa;
+        }
+        /* Skills */
+        
+        .skills {
+            margin-bottom: 30px;
+        }
+        
+        .skills span {
+            display: inline-block;
+            background: #1e1e1e;
+            color: #3391ff;
+            padding: 8px 14px;
+            margin: 5px;
+            border-radius: 20px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        
+        .skills span:hover {
+            background: #3391ff;
+            color: white;
+        }
+        /* Buttons */
+        
+        .about-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .about-buttons button,
+        .about-buttons a {
+            padding: 14px 28px;
+            font-weight: bold;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        
+        .about-buttons button {
+            background: white;
+            color: #3391ff;
+            border: none;
+        }
+        
+        .about-buttons button:hover {
+            background: #3391ff;
+            color: white;
+            box-shadow: 0 0 20px rgba(51, 145, 255, 0.6);
+        }
+        
+        .about-buttons a {
+            background: #3391ff;
+            color: white;
+        }
+        
+        .about-buttons a:hover {
+            background: #2277cc;
+            box-shadow: 0 0 20px rgba(51, 145, 255, 0.6);
+        }
+        /* Fade-in Animation */
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s forwards;
+        }
+        
+        .fade-in:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+        
+        .fade-in:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+        
+        .fade-in:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+        
+        .fade-in:nth-child(4) {
+            animation-delay: 0.8s;
+        }
+        
+        .fade-in:nth-child(5) {
+            animation-delay: 1s;
+        }
+        
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Stack on Mobile */
+        
+        @media (max-width: 768px) {
+            section#about {
+                flex-direction: column;
+            }
+            .about-right {
+                padding: 40px 25px;
+            }
+            .about-right h1 {
+                font-size: 34px;
+            }
+        }
+    </style>
 
+    <script>
+        const slides = document.querySelectorAll(".slide");
+        let index = 0;
 
+        function showSlide() {
+            slides.forEach(slide => slide.classList.remove("active"));
+            slides[index].classList.add("active");
+        }
 
+        setInterval(() => {
+            index = (index + 1) % slides.length;
+            showSlide();
+        }, 4000);
+
+        function scrollToPortfolio() {
+            document.getElementById("portfolio") ? .scrollIntoView({
+                behavior: "smooth"
+            });
+        }
+    </script>
 
 
 
@@ -1338,4 +1454,3 @@
     </body>
 
     </html>
-
