@@ -1384,6 +1384,79 @@
                 }
             }
         </script>
+
+        <!-- Contact Section Start -->
+<section id="contact-section" style="position: relative; overflow: hidden; background: #000000; padding: 4rem 1rem; color: #fff;">
+    <!-- Particles Background -->
+    <div id="particles-js-contact" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 0;"></div>
+
+    <!-- Contact Form Container -->
+    <div style="position: relative; z-index: 1; max-width: 900px; margin: 0 auto; background-color: rgba(0, 0, 0, 0.3); border-radius: 10px; padding: 2rem; box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);">
+        <h2 style="text-align: center; font-size: 2rem; margin-bottom: 1.5rem;">Don<span style="color: red;">'</span>t be shy, write to us</h2>
+
+        <form style="display: grid; gap: 1.5rem;">
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+                <div style="flex: 1 1 45%;">
+                    <label for="name" style="font-weight: 600; margin-bottom: 0.3rem; display: block;">Name *</label>
+                    <input type="text" id="name" placeholder="Full name" required style="width: 100%; padding: 0.75rem; background: #111; border: 1px solid #555; color: #fff; border-radius: 5px;">
+                </div>
+                <div style="flex: 1 1 45%;">
+                    <label for="email" style="font-weight: 600; margin-bottom: 0.3rem; display: block;">Email *</label>
+                    <input type="email" id="email" placeholder="Email address" required style="width: 100%; padding: 0.75rem; background: #111; border: 1px solid #555; color: #fff; border-radius: 5px;">
+                </div>
+            </div>
+
+            <div style="flex: 1 1 100%;">
+                <label for="message" style="font-weight: 600; margin-bottom: 0.3rem; display: block;">How can we help?</label>
+                <textarea id="message" placeholder="Tell us about the project" style="width: 100%; height: 150px; padding: 0.75rem; background: #111; border: 1px solid #555; color: #fff; border-radius: 5px;"></textarea>
+            </div>
+
+            <div>
+                <label style="font-weight: 600; margin-bottom: 0.5rem; display: block;">Services *</label>
+                <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+                    <label style="display: flex; align-items: center; gap: 0.5rem;"><input type="checkbox" style="accent-color: red;"> Branding</label>
+                    <label style="display: flex; align-items: center; gap: 0.5rem;"><input type="checkbox" style="accent-color: red;"> Digital Experiences</label>
+                    <label style="display: flex; align-items: center; gap: 0.5rem;"><input type="checkbox" style="accent-color: red;"> Web Development</label>
+                </div>
+            </div>
+
+            <button type="submit" style="background: #fff; color: #000; border: none; padding: 1rem 2rem; font-size: 1rem; border-radius: 2rem; cursor: pointer; display: block; margin: 0 auto; transition: 0.3s;">Send Message</button>
+        </form>
+    </div>
+
+    <!-- Scroll To Top Button -->
+    <button id="scrollToTopBtn" title="Go to top" style="position: fixed; bottom: 30px; right: 30px; background: #3391ff; color: #fff; border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 24px; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.2); z-index: 999;">↑</button>
+</section>
+
+<!-- Include Particles.js Library -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+<!-- Init Particles -->
+<script>
+    particlesJS("particles-js-contact", {
+        particles: {
+            number: { value: 80, density: { enable: true, value_area: 800 } },
+            color: { value: ["#ffffff", "#0000ff"] },
+            shape: { type: "circle", stroke: { width: 0, color: "#000000" } },
+            opacity: { value: 0.6, random: true },
+            size: { value: 3, random: true },
+            line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.3, width: 1 },
+            move: { enable: true, speed: 1.5, direction: "none", out_mode: "out" }
+        },
+        interactivity: {
+            detect_on: "canvas",
+            events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "push" }, resize: true },
+            modes: { grab: { distance: 140, line_linked: { opacity: 0.8 } }, push: { particles_nb: 4 } }
+        },
+        retina_detect: true
+    });
+
+    // Scroll to Top Button
+    const scrollBtn = document.getElementById("scrollToTopBtn");
+    scrollBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+</script>
         <!-- Scripts -->
         <script>
             const textList = ['UI/UX Designer', 'Photo Retoucher', 'Marketing Artist'];
